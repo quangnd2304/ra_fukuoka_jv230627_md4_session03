@@ -12,4 +12,6 @@ public interface StudentRepository {
     boolean update(Student student);
 
     boolean delete(int studentId);
+
+    Student findById(int studentId);
 }

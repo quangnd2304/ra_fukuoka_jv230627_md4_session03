@@ -27,11 +27,16 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public boolean update(Student student) {
-        return false;
+        return studentRepository.update(student);
     }
 
     @Override
     public boolean delete(int studentId) {
-        return false;
+        return studentRepository.delete(studentId);
+    }
+
+    @Override
+    public Student findById(int studentId) {
+        return studentRepository.findById(studentId);
     }
 }

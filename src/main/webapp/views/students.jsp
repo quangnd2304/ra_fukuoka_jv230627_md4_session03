@@ -12,28 +12,36 @@
     <title>List Student</title>
 </head>
 <body>
-  <table border="1">
+<table border="1">
     <thead>
-      <tr>
+    <tr>
+        <th>No</th>
         <th>Student ID</th>
         <th>Student Name</th>
         <th>Age</th>
         <th>Status</th>
         <th>Action</th>
-      </tr>
+    </tr>
     </thead>
     <tbody>
-      <%-- Lay listStudent trong request va hien thi --%>
-      <c:forEach items="${listStudent}" var="student">
-          <tr>
+    <%-- Lay listStudent trong request va hien thi --%>
+    <c:set var="no" value="1"/>
+    <c:forEach items="${listStudent}" var="student">
+        <tr>
+            <td>${no}</td>
             <td>${student.studentId}</td>
             <td>${student.studentName}</td>
             <td>${student.age}</td>
             <td>${student.status?"Active":"Inactive"}</td>
-          </tr>
-      </c:forEach>
+            <td>
+                <a href="<%=request.getContextPath()%>/StudentController?action=initUpdate&&studentId=${student.studentId}">Update</a>
+                <a href="<%=request.getContextPath()%>/StudentController?action=delete&&studentId=${student.studentId}">Delete</a>
+            </td>
+        </tr>
+        <c:set var="no" value="${no+1}"/>
+    </c:forEach>
     </tbody>
-  </table>
-  <a href="<%=request.getContextPath()%>/views/newStudent.jsp">Create new student</a>
+</table>
+<a href="<%=request.getContextPath()%>/views/newStudent.jsp">Create new student</a>
 </body>
 </html>
